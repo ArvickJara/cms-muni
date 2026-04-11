@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "noticias",
+  "info": {
+    "singularName": "noticia",
+    "pluralName": "noticias",
+    "displayName": "noticias"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo_noticia": {
+      "type": "string"
+    },
+    "breve_descripcion": {
+      "type": "text"
+    },
+    "cuerpo_noticia": {
+      "type": "text"
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "tiempo_lectura_min": {
+      "type": "integer"
+    },
+    "categoria": {
+      "type": "string"
+    },
+    "carrusel_noticias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::carrusel-noticia.carrusel-noticia",
+      "mappedBy": "noticia"
+    }
+  }
+}
