@@ -23,6 +23,9 @@
         },
         "nombre": {
             "type": "string"
+        },
+        "enlace_mas_informacion": {
+            "type": "string"
         }
     }
 }
