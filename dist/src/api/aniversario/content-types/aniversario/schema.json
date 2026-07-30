@@ -1,0 +1,29 @@
+{
+    "kind": "collectionType",
+    "collectionName": "aniversarios",
+    "info": {
+        "singularName": "aniversario",
+        "pluralName": "aniversarios",
+        "displayName": "Aniversario"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "anio": {
+            "type": "integer",
+            "required": true
+        },
+        "titulo": {
+            "type": "string"
+        },
+        "paginas": {
+            "type": "media",
+            "multiple": true,
+            "allowedTypes": [
+                "images"
+            ]
+        }
+    }
+}

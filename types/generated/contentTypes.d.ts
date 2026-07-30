@@ -436,6 +436,36 @@ export interface ApiAlcaldeAlcalde extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiAniversarioAniversario extends Struct.CollectionTypeSchema {
+  collectionName: 'aniversarios';
+  info: {
+    displayName: 'Aniversario';
+    pluralName: 'aniversarios';
+    singularName: 'aniversario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    anio: Schema.Attribute.Integer & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::aniversario.aniversario'
+    > &
+      Schema.Attribute.Private;
+    paginas: Schema.Attribute.Media<'images', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCarruselNoticiaCarruselNoticia
   extends Struct.CollectionTypeSchema {
   collectionName: 'carrusel_noticias';
@@ -716,6 +746,7 @@ export interface ApiModalCarruselModalCarrusel
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    enlace_mas_informacion: Schema.Attribute.String;
     imagen: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -1700,6 +1731,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::actividades-subgerencia.actividades-subgerencia': ApiActividadesSubgerenciaActividadesSubgerencia;
       'api::alcalde.alcalde': ApiAlcaldeAlcalde;
+      'api::aniversario.aniversario': ApiAniversarioAniversario;
       'api::carrusel-noticia.carrusel-noticia': ApiCarruselNoticiaCarruselNoticia;
       'api::caruusel-turismo.caruusel-turismo': ApiCaruuselTurismoCaruuselTurismo;
       'api::comercio.comercio': ApiComercioComercio;
