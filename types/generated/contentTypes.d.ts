@@ -615,6 +615,37 @@ export interface ApiConvocatoriaConvocatoria
   };
 }
 
+export interface ApiDecretoDecreto extends Struct.CollectionTypeSchema {
+  collectionName: 'decretos';
+  info: {
+    displayName: 'Decreto';
+    pluralName: 'decretos';
+    singularName: 'decreto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    archivo: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::decreto.decreto'
+    > &
+      Schema.Attribute.Private;
+    numero: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiEnlacesDeIntereEnlacesDeIntere
   extends Struct.CollectionTypeSchema {
   collectionName: 'enlaces_de_interes';
@@ -1736,6 +1767,7 @@ declare module '@strapi/strapi' {
       'api::caruusel-turismo.caruusel-turismo': ApiCaruuselTurismoCaruuselTurismo;
       'api::comercio.comercio': ApiComercioComercio;
       'api::convocatoria.convocatoria': ApiConvocatoriaConvocatoria;
+      'api::decreto.decreto': ApiDecretoDecreto;
       'api::enlaces-de-intere.enlaces-de-intere': ApiEnlacesDeIntereEnlacesDeIntere;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::modal-carrusel.modal-carrusel': ApiModalCarruselModalCarrusel;
