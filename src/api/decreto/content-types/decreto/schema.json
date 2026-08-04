@@ -4,7 +4,7 @@
   "info": {
     "singularName": "decreto",
     "pluralName": "decretos",
-    "displayName": "Decreto"
+    "displayName": "Documento Oficial"
   },
   "options": {
     "draftAndPublish": true
@@ -14,6 +14,20 @@
     "titulo": {
       "type": "string",
       "required": true
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "Acuerdos de Concejo",
+        "Decretos de Alcaldía",
+        "Ordenanzas Municipales",
+        "Resoluciones de Alcaldía",
+        "Resoluciones de Concejo",
+        "Resoluciones Gerenciales",
+        "Otros"
+      ],
+      "required": true,
+      "default": "Otros"
     },
     "numero": {
       "type": "string"

@@ -618,7 +618,7 @@ export interface ApiConvocatoriaConvocatoria
 export interface ApiDecretoDecreto extends Struct.CollectionTypeSchema {
   collectionName: 'decretos';
   info: {
-    displayName: 'Decreto';
+    displayName: 'Documento Oficial';
     pluralName: 'decretos';
     singularName: 'decreto';
   };
@@ -639,6 +639,19 @@ export interface ApiDecretoDecreto extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     numero: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    tipo: Schema.Attribute.Enumeration<
+      [
+        'Acuerdos de Concejo',
+        'Decretos de Alcald\u00EDa',
+        'Ordenanzas Municipales',
+        'Resoluciones de Alcald\u00EDa',
+        'Resoluciones de Concejo',
+        'Resoluciones Gerenciales',
+        'Otros',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Otros'>;
     titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
